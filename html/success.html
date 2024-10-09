@@ -1,3 +1,116 @@
-<div class="container">
-    <h1>Success: Contact Request has been sent</h1>>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Design Homepage</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        /* Header Image with shadow and elevation */
+        .header {
+            width: 100%;
+            height: 300px;
+            background-image: url('../images/HeaderImage.png');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Elevation */
+            margin-bottom: 30px;
+        }
+
+        /* Container for side-by-side images with flex and Material Design shadow */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Space between images */
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+
+        .image-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Material shadow */
+            transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+            width: 300px;
+            padding: 40px;
+        }
+
+        .image-box:hover {
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.2); /* Hover effect with more elevation */
+        }
+
+        /* Images with rounded corners */
+        .image-box img {
+            width: 50%;
+            height: 70%;
+            /* height: 200px; */
+            /* object-fit: cover; */
+            margin-top: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        /* Material Design Button */
+        .material-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6200ea;
+            color: white;
+            text-transform: uppercase;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .material-button:hover {
+            background-color: #3700b3;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow on hover */
+        }
+
+        .material-button:active {
+            background-color: #30009c;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Reset shadow on click */
+        }
+
+        /* Add responsive behavior for small screens */
+        @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        // Function to navigate to different pages
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- Header Image Section -->
+    <div class="header">
+        <!-- Header background-image in the CSS -->
+    </div>
+
+    <!-- Side-by-side Images with Material Design effects -->
+    <div class="image-container">
+        <h2>You are now successfully logged in.</h2>
+    </div>
+
+</body>
+</html>
