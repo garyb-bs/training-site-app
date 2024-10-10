@@ -67,9 +67,15 @@
             if (username === validUsername && password === validPassword) {
                 message.style.color = 'green';
                 message.textContent = "Login successful!";
+            } else if (username != validUsername && password == validPassword) {
+                message.style.color = 'red';
+                message.textContent = "Incorrect username!";
+            } else if (username == validUsername && password != validPassword) {
+                message.style.color = 'red';
+                message.textContent = "Incorrect password!";
             } else {
                 message.style.color = 'red';
-                message.textContent = "Incorrect username or password!";
+                message.textContent = "Incorrect username and password!";
             }
         }
     </script>
