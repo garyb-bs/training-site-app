@@ -56,9 +56,21 @@
     </style>
 
     <script>
-        // Function to navigate to different pages
-        function navigateTo(page) {
-            window.location.href = page;
+        const validUsername = "student";
+        const validPassword = "Password123";
+
+        function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const message = document.getElementById("message");
+
+            if (username === validUsername && password === validPassword) {
+                message.style.color = 'green';
+                message.textContent = "Login successful!";
+            } else {
+                message.style.color = 'red';
+                message.textContent = "Incorrect username or password!";
+            }
         }
     </script>
 </head>
@@ -66,7 +78,7 @@
     <div class="login-container">
         <img src="https://static-00.iconduck.com/assets.00/browserstack-icon-1024x1024-7zz2pc78.png" alt="Logo"> <!-- Add your image source here -->
         <h5>Login</h5>
-        <form>
+        
             <div class="input-field">
                 <input id="username" type="text" class="validate" required>
                 <label for="username">Username</label>
@@ -75,8 +87,9 @@
                 <input id="password" type="password" class="validate" required>
                 <label for="password">Password</label>
             </div>
-            <button type="submit" class="material-button" onclick="navigateTo('/html/success.html')">Login</button>
-        </form>
+            <button type="submit" class="material-button" onclick="login()">Login</button>
+            <p class="message" id="message"></p>
+        
     </div>
 
     <!-- Import Materialize JS -->
