@@ -21,4 +21,8 @@ app.get('/contact', (req, res) => {
     res.sendFile(__dirname + '/html/form.html');
 })
 
+app.get('/accessibility-test', (req, res) => {
+    res.sendFile(__dirname + '/html/accessibility.html');
+})
+
 app.listen(port, console.log(`listening on port ${port}`));

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Material Design Accessibility Check Page">
+    <title>Accessibility Check Page - Material Design</title>
+
+    <!-- Material Design Lite CSS -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .low-contrast {
+            color: #fff;
+            background-color: #eee; /* This is a deliberately low contrast example */
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .accessible-button {
+            margin: 10px 0;
+        }
+        .accessible-button:focus {
+            outline: 3px solid #ff0;
+        }
+    </style>
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">Accessibility Test Page</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="#main-content">Skip to Main Content</a>
+                    <a class="mdl-navigation__link" href="#contact-form">Contact Form</a>
+                    <a class="mdl-navigation__link" href="#images-section">Images Section</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="mdl-layout__content" id="main-content">
+            <div class="page-content mdl-grid">
+                <section class="mdl-cell mdl-cell--12-col">
+                    <h2>Keyboard Navigation</h2>
+                    <p>
+                        Try navigating through this page using the <strong>Tab</strong> key. 
+                        Ensure that all interactive elements are accessible and that the focus is clearly visible.
+                    </p>
+                    <!-- Accessible button -->
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored accessible-button">
+                        Accessible Button
+                    </button>
+
+                    <!-- Non-Accessible button (no focus style) -->
+                    <button class="mdl-button mdl-js-button accessible-button">
+                        Non-Accessible Button
+                    </button>
+                </section>
+
+                <section class="mdl-cell mdl-cell--12-col" id="images-section">
+                    <h2>Images with Alt Text</h2>
+                    <p>Below are two images. The first image has descriptive alt text, while the second is missing it.</p>
+                    <img src="accessible-image.jpg" alt="A person using a screen reader to navigate a webpage" class="mdl-shadow--2dp" width="300">
+                    <img src="inaccessible-image.jpg" alt="" class="mdl-shadow--2dp" width="300"> <!-- This image has no alt text -->
+                </section>
+
+                <section class="mdl-cell mdl-cell--12-col">
+                    <h2>Color Contrast</h2>
+                    <p class="low-contrast">This text is an example of low contrast and may be difficult for users with visual impairments to read.</p>
+                    <p style="color: #000; background-color: #fff; padding: 10px;">This text has high contrast and is easier to read.</p>
+                </section>
+
+                <section class="mdl-cell mdl-cell--12-col" id="contact-form">
+                    <h2>Form Accessibility</h2>
+                    <form action="#" class="mdl-grid">
+                        <!-- Name field -->
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <input class="mdl-textfield__input" type="text" id="name">
+                            <label class="mdl-textfield__label" for="name">Name</label>
+                        </div>
+
+                        <!-- Email field -->
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                            <input class="mdl-textfield__input" type="email" id="email">
+                            <label class="mdl-textfield__label" for="email">Email</label>
+                        </div>
+
+                        <!-- Message field -->
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+                            <textarea class="mdl-textfield__input" type="text" id="message"></textarea>
+                            <label class="mdl-textfield__label" for="message">Message</label>
+                        </div>
+
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section class="mdl-cell mdl-cell--12-col">
+                    <h2>ARIA Roles and Landmarks</h2>
+                    <p role="alert">This is an ARIA alert. Screen readers should announce this when it appears.</p>
+                </section>
+            </div>
+        </main>
+
+        <footer class="mdl-mini-footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">&copy; 2024 Accessibility Testing</div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Material Design Lite JavaScript -->
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</body>
+</html>
