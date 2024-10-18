@@ -25,4 +25,8 @@ app.get('/accessibility-test', (req, res) => {
     res.sendFile(__dirname + '/html/accessibility.html');
 })
 
+app.get('/products', (req, res) => {
+    res.sendFile(__dirname + '/html/products.html');
+})
+
 app.listen(port, console.log(`listening on port ${port}`));
