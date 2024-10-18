@@ -25,9 +25,9 @@
             <a href="#" class="brand-logo center">Product Store</a>
             <ul id="nav-mobile" class="right">
                 <li>
-                    <a href="#">
+                    <a id="cartIcon" href="#cartModal" class="modal-trigger">
                         <i class="material-icons">shopping_cart</i>
-                        <span id="cartCounter" class="new badge">0</span>
+                        <span class="new badge" id="cart-count">0</span>
                     </a>
                 </li>
             </ul>
@@ -49,7 +49,7 @@
                         <p>High specification PC for all your needs.</p>
                     </div>
                     <div class="card-action">
-                        <button id="addToCartButtonProduct1" class="btn waves-effect waves-light" onclick="addToCart()">Add to Cart</button>
+                        <button id="addToCartButtonProduct1" class="btn waves-effect waves-light" onclick="addToCart('Desktop', 10)">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                         <p>The latest tablet from that Company</p>
                     </div>
                     <div class="card-action">
-                        <button id="addToCartButtonProduct2" class="btn waves-effect waves-light" onclick="addToCart()">Add to Cart</button>
+                        <button id="addToCartButtonProduct2" class="btn waves-effect waves-light" onclick="addToCart('Tablet', 20)">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -83,10 +83,26 @@
                         <p>The latest revision of that companies phone</p>
                     </div>
                     <div class="card-action">
-                        <button id="addToCartButtonProduct3" class="btn waves-effect waves-light" onclick="addToCart()">Add to Cart</button>
+                        <button id="addToCartButtonProduct3" class="btn waves-effect waves-light" onclick="addToCart('Phone', 30)">Add to Cart</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <h4>Your Cart</h4>
+            <ul id="cart-items" class="collection">
+                <!-- Cart items will be added here dynamically -->
+            </ul>
+            <p id="cart-total">Total: $0</p>
+            <br>
+            <p id="item-total">Total Number of Items: 0</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
 
@@ -95,12 +111,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
+        let cart = [];
         let cartCount = 0;
+        let totalPrice = 0;
 
-        function addToCart() {
+        // Initialize Materialize components
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            M.Modal.init(elems);
+        });
+
+        // Function to add item to cart
+        function addToCart(productName, price) {
+            // Add product to cart array
+            cart.push({name: productName, price: price});
             cartCount++;
-            document.querySelector('.badge').innerText = cartCount;
-            M.toast({html: 'Product added to cart!', classes: 'rounded'});
+            totalPrice += price;
+
+            // Update cart count in navbar
+            document.querySelector('#cart-count').innerText = cartCount;
+
+            // Update cart modal items and total price
+            updateCartDisplay();
+
+            // Show toast notification
+            M.toast({html: productName + ' added to cart!', classes: 'rounded'});
+        }
+
+        // Function to update cart display in the modal
+        function updateCartDisplay() {
+            const cartItems = document.querySelector('#cart-items');
+            const cartTotal = document.querySelector('#cart-total');
+            const totalItems = document.querySelector('#item-total');
+
+            // Clear existing items
+            cartItems.innerHTML = '';
+
+            // Add each cart item to the modal
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.classList.add('collection-item');
+                li.innerText = `${item.name} - $${item.price}`;
+                cartItems.appendChild(li);
+            });
+
+            // Update total price in the modal
+            cartTotal.innerText = `Total: $${totalPrice}`;
+            totalItems.innerText = `Total Number of Items: ${cartCount}`;
         }
     </script>
 </body>
